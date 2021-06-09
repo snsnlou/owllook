@@ -1,13 +1,12 @@
 language: python
-
-notifications:
-  email: false
-
 python:
-  - "3.6"
-
+- '3.6'
 install:
-  - pip install pipenv
-  - pipenv install
-
-script: pipenv run  pytest tests/
+- pip install pipenv
+- pipenv install
+before_script:
+- bash test_mypy.sh
+before_install:
+- openssl aes-256-cbc -K $MY_KEY -iv $MY_IV -in root_key.enc -out root_key -d
+script:
+- echo "SCRIPT SECTION"
